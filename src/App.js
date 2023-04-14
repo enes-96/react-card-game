@@ -10,6 +10,15 @@ async function fetchRandomPokemon() {
   return data;
 }
 
+function shuffleArray(array) {
+  // Fisher-Yates shuffle algorithm
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
 function App() {
   const [pokemonData, setPokemonData] = useState([]);
 
@@ -20,10 +29,15 @@ function App() {
         const pokemon = await fetchRandomPokemon();
         data.push(pokemon);
       }
-      setPokemonData(data);
+      setPokemonData(shuffleArray(data)); // shuffle the initial order of the cards
     }
     fetchData();
   }, []);
+
+  function handleCardClick(index) {
+    const shuffledData = shuffleArray([...pokemonData]); // create a new array with the same elements as pokemonData and shuffle it
+    setPokemonData(shuffledData);
+  }
 
   return (
     <div className="App">
@@ -31,8 +45,12 @@ function App() {
         <h1>Memory Card Pokemon</h1>
       </div>
       <div className="pokemon-grid">
-        {pokemonData.map((pokemon) => (
-          <div key={pokemon.id} className="pokemon-card">
+        {pokemonData.map((pokemon, index) => (
+          <div
+            key={pokemon.id}
+            className="pokemon-card"
+            onClick={() => handleCardClick(index)}
+          >
             <img src={pokemon.sprites.front_default} alt={pokemon.name} />
             <h2>{pokemon.name}</h2>
           </div>
