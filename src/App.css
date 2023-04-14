@@ -1,0 +1,38 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.pokemon-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
+  color: white;
+  gap: 24px;
+  max-width: 1200px;
+  margin: auto;
+}
+.pokemon-card {
+  background-color: black;
+  width: 160px;
+  height: 200px;
+  display: grid;
+  text-align: center;
+  place-content: center;
+  border-radius: 11px;
+}
+img {
+  height: 120px;
+  width: 120px;
+  background-color: darkblue;
+  border-radius: 11px;
+}
+.header {
+  background-color: black;
+  color: white;
+  padding: 12px;
+  width: 1200px;
+  margin: 12px auto;
+  border-radius: 11px;
+}
