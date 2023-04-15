@@ -21,6 +21,7 @@ function shuffleArray(array) {
 
 function App() {
   const [pokemonData, setPokemonData] = useState([]);
+  const [clickedCards, setClickedCards] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -35,8 +36,14 @@ function App() {
   }, []);
 
   function handleCardClick(index) {
-    const shuffledData = shuffleArray([...pokemonData]); // create a new array with the same elements as pokemonData and shuffle it
-    setPokemonData(shuffledData);
+    if (clickedCards.includes(index)) {
+      alert("You already clicked this card!");
+    } else {
+      const newClickedCards = [...clickedCards, index];
+      setClickedCards(newClickedCards);
+      const shuffledData = shuffleArray([...pokemonData]); // create a new array with the same elements as pokemonData and shuffle it
+      setPokemonData(shuffledData);
+    }
   }
 
   return (
