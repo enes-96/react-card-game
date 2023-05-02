@@ -1,11 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 .header {
   background-color: black;
   color: white;
-  padding: 12px;
+  padding: 24px;
   max-width: 1200px;
   margin: 12px auto;
   border-radius: 11px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.game-tut {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  font-size: 24px;
+  color: red;
+  cursor: pointer;
 }
