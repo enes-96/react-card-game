@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header lives={lives} />
+      <Header />
       <PokemonCards lives={lives} onGameOver={handleGameOver} />
     </div>
   );
